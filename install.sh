@@ -30,5 +30,14 @@ mkdir -p ~/.config/nvim
 cp $SCRIPT_DIR/init.lua ~/.config/nvim
 cp -r $SCRIPT_DIR/lua ~/.config/nvim/
 
+
+if [ -z $(which npm) ]; then
+    echo "npm not installed, skipping pyright and tsserver"
+    exit 1;
+fi
+
 echo "Installing pyright..."
 npm i -g pyright
+
+echo "Installing tsserver..."
+npm install -g typescript typescript-language-server
